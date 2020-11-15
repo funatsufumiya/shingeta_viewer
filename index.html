@@ -10,6 +10,24 @@
             font-size: 20pt;
             width: 100%;
         }
+        table , td, th {
+            border: 1px solid #595959;
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 2px;
+            width: 40px;
+            height: 25px;
+        }
+        td {
+            text-align: center;
+        }
+        th {
+            background: #f0e6cc;
+        }
+        table {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -17,60 +35,38 @@
     <div id="out"></div>
 
     <table>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
+        <tr><td data-val="１">１</td><td data-val="２">２</td><td data-val="３">３</td><td data-val="４">４</td><td data-val="５">５</td><td data-val="６">６</td><td data-val="７">７</td><td data-val="８">８</td><td data-val="９">９</td><td data-val="０">０</td><td data-val="ー">ー</td></tr>
+        <tr><td data-val="ー">ー</td><td data-val="に">に</td><td data-val="は">は</td><td data-val="、">、</td><td data-val="ち">ち</td><td data-val="ぐ">ぐ</td><td data-val="ば">ば</td><td data-val="こ">こ</td><td data-val="が">が</td><td data-val="ひ">ひ</td><td data-val="げ">げ</td></tr>
+        <tr><td data-val="の">の</td><td data-val="と">と</td><td data-val="か">か</td><td data-val="ん">ん</td><td data-val="っ">っ</td><td data-val="く">く</td><td data-val="う">う</td><td data-val="い">い</td><td data-val="し">し</td><td data-val="な">な</td><td data-val="BS">BS</td></tr>
+        <tr><td data-val="す">す</td><td data-val="ま">ま</td><td data-val="き">き</td><td data-val="る">る</td><td data-val="つ">つ</td><td data-val="て">て</td><td data-val="た">た</td><td data-val="で">で</td><td data-val="。">。</td><td data-val="ぶ">ぶ</td></tr>
+    </table>
+
+    <table>
+        <tr><td data-val="ぁ">ぁ</td><td data-val="ぃ">ぃ</td><td data-val="ぅ">ぅ</td><td data-val="ぇ">ぇ</td><td data-val="ぉ">ぉ</td><td></td><td data-val="，">，</td><td data-val="「">「</td><td data-val="」">」</td><td data-val="；">；</td><td data-val="＠">＠</td></tr>
+        <tr><td data-val="ファ">ファ</td><td data-val="ご">ご</td><td data-val="ふ">ふ</td><td data-val="フィ">フィ</td><td data-val="フェ">フェ</td><td data-val="ウィ">ウィ</td><td data-val="ぱ">ぱ</td><td data-val="よ">よ</td><td data-val="み">み</td><td data-val="ウェ">ウェ</td><td data-val="ウォ">ウォ</td></tr>
+        <tr><td data-val="ほ">ほ</td><td data-val="じ">じ</td><td data-val="れ">れ</td><td data-val="も">も</td><td data-val="ゆ">ゆ</td><td data-val="へ">へ</td><td data-val="あ">あ</td><td data-val="れ">れ</td><td data-val="お">お</td><td data-val="え">え</td><td></td></tr>
+        <tr><td data-val="づ">づ</td><td data-val="ぞ">ぞ</td><td data-val="ぼ">ぼ</td><td data-val="む">む</td><td data-val="フォ">フォ</td><td data-val="せ">せ</td><td data-val="ね">ね</td><td data-val="べ">べ</td><td data-val="ぷ">ぷ</td><td data-val="ヴ">ヴ</td></tr>
+    </table>
+
+    <table>
+        <tr><td data-val="や">や</td><td data-val="みゃ">みゃ</td><td data-val="みゅ">みゅ</td><td data-val="みょ">みょ</td><td data-val="ゎ">ゎ</td><td></td><td data-val="．">．</td><td data-val="（">（</td><td data-val="）">）</td><td data-val="：">：</td><td data-val="＊">＊</td></tr>
+        <tr><td data-val="ぢ">ぢ</td><td data-val="め">め</td><td data-val="け">け</td><td data-val="ティ">ティ</td><td data-val="ディ">ディ</td><td data-val="シェ">シェ</td><td data-val="ぺ">ぺ</td><td data-val="ど">ど</td><td data-val="や">や</td><td data-val="ジェ">ジェ</td><td></td></tr>
+        <tr><td data-val="を">を</td><td data-val="さ">さ</td><td data-val="お">お</td><td data-val="り">り</td><td data-val="ず">ず</td><td data-val="び">び</td><td data-val="ら">ら</td><td data-val="じ">じ</td><td data-val="さ">さ</td><td data-val="そ">そ</td><td></td></tr>
+        <tr><td data-val="ぜ">ぜ</td><td data-val="ざ">ざ</td><td data-val="ぎ">ぎ</td><td data-val="ろ">ろ</td><td data-val="ぬ">ぬ</td><td data-val="わ">わ</td><td data-val="だ">だ</td><td data-val="ぴ">ぴ</td><td data-val="ぽ">ぽ</td><td data-val="チェ">チェ</td></tr>
+    </table>
+
+    <table>
+        <tr><td data-val="ゅ">ゅ</td><td data-val="びゃ">びゃ</td><td data-val="びゅ">びゅ</td><td data-val="びょ">びょ</td><td></td></tr>
+        <tr><td data-val="ひゅ">ひゅ</td><td data-val="しゅ">しゅ</td><td data-val="しょ">しょ</td><td data-val="きゅ">きゅ</td><td data-val="ちゅ">ちゅ</td></tr>
+        <tr><td data-val="ひょ">ひょ</td><td></td><td></td><td data-val="きょ">きょ</td><td data-val="ちょ">ちょ</td></tr>
+        <tr><td data-val="ひゃ">ひゃ</td><td></td><td data-val="しゃ">しゃ</td><td data-val="きゃ">きゃ</td><td data-val="ちゃ">ちゃ</td></tr>
+    </table>
+
+    <table>
+        <tr><td data-val="ょ">ょ</td><td data-val="ぴゃ">ぴゃ</td><td data-val="ぴゅ">ぴゅ</td><td data-val="ぴょ">ぴょ</td><td></td></tr>
+        <tr><td data-val="りゅ">りゅ</td><td data-val="じゅ">じゅ</td><td data-val="じょ">じょ</td><td data-val="ぎゅ">ぎゅ</td><td data-val="にゅ">にゅ</td></tr>
+        <tr><td data-val="りょ">りょ</td><td></td><td></td><td data-val="ぎょ">ぎょ</td><td data-val="にょ">にょ</td></tr>
+        <tr><td data-val="りゃ">りゃ</td><td></td><td data-val="じゃ">じゃ</td><td data-val="ぎゃ">ぎゃ</td><td data-val="にゃ">にゃ</td></tr>
     </table>
 
     <script
