@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,10 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
         }
-        b, strong, .bold{
+
+        b,
+        strong,
+        .bold {
             font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
         }
 
@@ -19,19 +23,25 @@
             border: none !important;
             line-height: 50pt;
         }
+
         textarea:focus {
             outline: none;
         }
+
         div.table {
             display: inline-block;
         }
+
         div.cell {
             display: inline-block;
         }
-        div.table , div.cell {
+
+        div.table,
+        div.cell {
             border: 1px solid #595959;
             border-collapse: collapse;
         }
+
         div.cell {
             font-size: 18pt;
             padding: 2px;
@@ -42,138 +52,521 @@
             display: table-cell;
             background: white;
         }
+
         div.cell.sp {
             border: none;
             background: transparent;
         }
+
         div.cell.hp {
             /* border-bottom: 3px solid black; */
             background: #ffffe0;
         }
+
         div.cell.half {
             width: 20px;
             border: none;
             background: transparent;
         }
+
         div.cell.one {
             width: 40px;
             border: none;
             background: transparent;
         }
+
         div.cell.one-half {
             width: 60px;
             border: none;
             background: transparent;
         }
+
         div.table {
             margin-bottom: 5px;
             /* border: 3px solid #595959 !important; */
             background: #f0f0f0;
             border: 3px solid #c0c0c0;
         }
-        div.table[data-table-hl]{
+
+        div.table.ja[data-table-hl] {
             border: 3px solid #bb0000;
         }
-        div.cell[data-hl]{
+
+        div.table.ja div.cell[data-hl] {
             background-color: #bb0000;
             color: white;
         }
+
+        .ja-container {
+            display: none;
+        }
+
+        .ja-container.display {
+            display: inline-block;
+        }
+
+        .ja-container[data-table-hl] {
+            display: inline-block;
+        }
+
+        .en-container {
+            display: none;
+        }
+
+        .en-container[data-table-hl] {
+            display: inline-block;
+        }
+
+        div.table.en[data-table-hl] {
+            border: 3px solid #1FBB00;
+        }
+
+        div.table.en div.cell[data-hl] {
+            background-color: #1FBB00;
+            color: white;
+        }
+
         body {
             margin: 10px;
         }
     </style>
 </head>
+
 <body>
     <textarea name="" id="" cols="30" rows="1"></textarea>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
 
     <div id="out"></div>
     <div id="last"></div>
 
-    <div class="table">
-        <div class="row"><div class="cell" data-val="１">１</div><div class="cell" data-val="２">２</div><div class="cell" data-val="３">３</div><div class="cell" data-val="４">４</div><div class="cell" data-val="５">５</div><div class="cell" data-val="６">６</div><div class="cell" data-val="７">７</div><div class="cell" data-val="８">８</div><div class="cell" data-val="９">９</div><div class="cell" data-val="０">０</div><div class="cell" data-val="ー">ー</div></div>
-        <div class="row"><div class="cell half">&nbsp;</div><div class="cell" data-val="ー">ー</div><div class="cell" data-val="に">に</div><div class="cell" data-val="は">は</div><div class="cell" data-val="、">、</div><div class="cell" data-val="ち">ち</div><div class="cell" data-val="ぐ">ぐ</div><div class="cell" data-val="ば">ば</div><div class="cell" data-val="こ">こ</div><div class="cell" data-val="が">が</div><div class="cell" data-val="ひ">ひ</div><div class="cell" data-val="げ">げ</div></div>
-        <div class="row"><div class="cell one">&nbsp;</div><div class="cell" data-val="の">の</div><div class="cell" data-val="と">と</div><div class="cell" data-val="か">か</div><div class="cell hp" data-val="ん">ん</div><div class="cell" data-val="っ">っ</div><div class="cell" data-val="く">く</div><div class="cell hp" data-val="う">う</div><div class="cell" data-val="い">い</div><div class="cell" data-val="し">し</div><div class="cell" data-val="な">な</div><div class="cell" data-val="BS">BS</div></div>
-        <div class="row"><div class="cell one-half">&nbsp;</div><div class="cell" data-val="す">す</div><div class="cell" data-val="ま">ま</div><div class="cell" data-val="き">き</div><div class="cell" data-val="る">る</div><div class="cell" data-val="つ">つ</div><div class="cell" data-val="て">て</div><div class="cell" data-val="た">た</div><div class="cell" data-val="で">で</div><div class="cell" data-val="。">。</div><div class="cell" data-val="ぶ">ぶ</div></div>
-    </div>
-    <br>
+    <div class="container en-container">
+        <div class="table en">
+            <div class="row">
+                <div class="cell" data-val="&">&</div>
+                <div class="cell" data-val="[">[</div>
+                <div class="cell" data-val="{">{</div>
+                <div class="cell" data-val="}">}</div>
+                <div class="cell" data-val="(">(</div>
+                <div class="cell" data-val="=">=</div>
+                <div class="cell" data-val="*">*</div>
+                <div class="cell" data-val=")">)</div>
+                <div class="cell" data-val="+">+</div>
+                <div class="cell" data-val="]">]</div>
+                <div class="cell" data-val="!">!</div>
+                <div class="cell" data-val="#">#</div>
+                <div class="cell" data-val="¥">¥</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val=";">;</div>
+                <div class="cell" data-val=",">,</div>
+                <div class="cell" data-val=".">.</div>
+                <div class="cell" data-val="p">p</div>
+                <div class="cell" data-val="y">y</div>
+                <div class="cell" data-val="f">f</div>
+                <div class="cell" data-val="g">g</div>
+                <div class="cell" data-val="c">c</div>
+                <div class="cell" data-val="r">r</div>
+                <div class="cell" data-val="l">l</div>
+                <div class="cell" data-val="/">/</div>
+                <div class="cell" data-val="@">@</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="a">a</div>
+                <div class="cell" data-val="o">o</div>
+                <div class="cell" data-val="e">e</div>
+                <div class="cell hp" data-val="u">u</div>
+                <div class="cell" data-val="i">i</div>
+                <div class="cell" data-val="d">d</div>
+                <div class="cell hp" data-val="h">h</div>
+                <div class="cell" data-val="t">t</div>
+                <div class="cell" data-val="n">n</div>
+                <div class="cell" data-val="s">s</div>
+                <div class="cell" data-val="-">-</div>
+                <div class="cell" data-val="$">$</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="'">'</div>
+                <div class="cell" data-val="q">q</div>
+                <div class="cell" data-val="j">j</div>
+                <div class="cell" data-val="k">k</div>
+                <div class="cell" data-val="x">x</div>
+                <div class="cell" data-val="b">b</div>
+                <div class="cell" data-val="m">m</div>
+                <div class="cell" data-val="w">w</div>
+                <div class="cell" data-val="v">v</div>
+                <div class="cell" data-val="z">z</div>
+                <div class="cell" data-val="$">$</div>
+            </div>
+        </div>
 
-    <div class="table">
-        <div class="row"><div class="cell" data-val="ぁ">ぁ</div><div class="cell" data-val="ぃ">ぃ</div><div class="cell" data-val="ぅ">ぅ</div><div class="cell" data-val="ぇ">ぇ</div><div class="cell" data-val="ぉ">ぉ</div><div class="cell">&nbsp;</div><div class="cell" data-val="，">，</div><div class="cell" data-val="「">「</div><div class="cell" data-val="」">」</div><div class="cell" data-val="；">；</div><div class="cell" data-val="＠">＠</div></div>
-        <div class="row"><div class="cell half">&nbsp;</div><div class="cell" data-val="ファ">ファ</div><div class="cell" data-val="ご">ご</div><div class="cell" data-val="ふ">ふ</div><div class="cell" data-val="ふぃ">フィ</div><div class="cell" data-val="ふぇ">フェ</div><div class="cell" data-val="うぃ">ウィ</div><div class="cell" data-val="ぱ">ぱ</div><div class="cell" data-val="よ">よ</div><div class="cell" data-val="み">み</div><div class="cell" data-val="うぇ">ウェ</div><div class="cell" data-val="うぉ">ウォ</div></div>
-        <div class="row"><div class="cell one">&nbsp;</div><div class="cell" data-val="ほ">ほ</div><div class="cell" data-val="じ">じ</div><div class="cell" data-val="れ">れ</div><div class="cell hp" data-val="も">も</div><div class="cell" data-val="ゆ">ゆ</div><div class="cell" data-val="へ">へ</div><div class="cell hp" data-val="あ">あ</div><div class="cell" data-val="れ">れ</div><div class="cell" data-val="お">お</div><div class="cell" data-val="え">え</div><div class="cell">&nbsp;</div></div>
-        <div class="row"><div class="cell one-half">&nbsp;</div><div class="cell" data-val="づ">づ</div><div class="cell" data-val="ぞ">ぞ</div><div class="cell" data-val="ぼ">ぼ</div><div class="cell" data-val="む">む</div><div class="cell" data-val="ふぉ">フォ</div><div class="cell" data-val="せ">せ</div><div class="cell" data-val="ね">ね</div><div class="cell" data-val="べ">べ</div><div class="cell" data-val="ぷ">ぷ</div><div class="cell" data-val="ヴ">ヴ</div></div>
+        <div class="table en">
+            <div class="row">
+                <div class="cell" data-val="%">%</div>
+                <div class="cell" data-val="7">7</div>
+                <div class="cell" data-val="5">5</div>
+                <div class="cell" data-val="3">3</div>
+                <div class="cell" data-val="1">1</div>
+                <div class="cell" data-val="9">9</div>
+                <div class="cell" data-val="0">0</div>
+                <div class="cell" data-val="2">2</div>
+                <div class="cell" data-val="4">4</div>
+                <div class="cell" data-val="6">6</div>
+                <div class="cell" data-val="8">8</div>
+                <div class="cell" data-val="`">`</div>
+                <div class="cell" data-val="|">|</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val=":">:</div>
+                <div class="cell" data-val="&lt;">&lt;</div>
+                <div class="cell" data-val="&gt;">&gt;</div>
+                <div class="cell" data-val="P">P</div>
+                <div class="cell" data-val="Y">Y</div>
+                <div class="cell" data-val="F">F</div>
+                <div class="cell" data-val="G">G</div>
+                <div class="cell" data-val="C">C</div>
+                <div class="cell" data-val="R">R</div>
+                <div class="cell" data-val="L">L</div>
+                <div class="cell" data-val="?">?</div>
+                <div class="cell" data-val="^">^</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="A">A</div>
+                <div class="cell" data-val="O">O</div>
+                <div class="cell" data-val="E">E</div>
+                <div class="cell hp" data-val="U">U</div>
+                <div class="cell" data-val="I">I</div>
+                <div class="cell" data-val="D">D</div>
+                <div class="cell hp" data-val="H">H</div>
+                <div class="cell" data-val="T">T</div>
+                <div class="cell" data-val="N">N</div>
+                <div class="cell" data-val="S">S</div>
+                <div class="cell" data-val="_">_</div>
+                <div class="cell" data-val="~">~</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="&quot;">&quot;</div>
+                <div class="cell" data-val="Q">Q</div>
+                <div class="cell" data-val="J">J</div>
+                <div class="cell" data-val="K">K</div>
+                <div class="cell" data-val="X">X</div>
+                <div class="cell" data-val="B">B</div>
+                <div class="cell" data-val="M">M</div>
+                <div class="cell" data-val="W">W</div>
+                <div class="cell" data-val="V">V</div>
+                <div class="cell" data-val="Z">Z</div>
+                <div class="cell" data-val="~">~</div>
+            </div>
+        </div>
     </div>
-    <br>
 
-    <div class="table">
-        <div class="row"><div class="cell" data-val="や">や</div><div class="cell" data-val="みゃ">みゃ</div><div class="cell" data-val="みゅ">みゅ</div><div class="cell" data-val="みょ">みょ</div><div class="cell" data-val="ゎ">ゎ</div><div class="cell">&nbsp;</div><div class="cell" data-val="．">．</div><div class="cell" data-val="（">（</div><div class="cell" data-val="）">）</div><div class="cell" data-val="：">：</div><div class="cell" data-val="＊">＊</div></div>
-        <div class="row"><div class="cell half">&nbsp;</div><div class="cell" data-val="ぢ">ぢ</div><div class="cell" data-val="め">め</div><div class="cell" data-val="け">け</div><div class="cell" data-val="てぃ">ティ</div><div class="cell" data-val="でぃ">ディ</div><div class="cell" data-val="しぇ">シェ</div><div class="cell" data-val="ぺ">ぺ</div><div class="cell" data-val="ど">ど</div><div class="cell" data-val="や">や</div><div class="cell" data-val="じぇ">ジェ</div><div class="cell">&nbsp;</div></div>
-        <div class="row"><div class="cell one">&nbsp;</div><div class="cell" data-val="を">を</div><div class="cell" data-val="さ">さ</div><div class="cell" data-val="お">お</div><div class="cell hp" data-val="り">り</div><div class="cell" data-val="ず">ず</div><div class="cell" data-val="び">び</div><div class="cell hp" data-val="ら">ら</div><div class="cell" data-val="じ">じ</div><div class="cell" data-val="さ">さ</div><div class="cell" data-val="そ">そ</div><div class="cell">&nbsp;</div></div>
-        <div class="row"><div class="cell one-half">&nbsp;</div><div class="cell" data-val="ぜ">ぜ</div><div class="cell" data-val="ざ">ざ</div><div class="cell" data-val="ぎ">ぎ</div><div class="cell" data-val="ろ">ろ</div><div class="cell" data-val="ぬ">ぬ</div><div class="cell" data-val="わ">わ</div><div class="cell" data-val="だ">だ</div><div class="cell" data-val="ぴ">ぴ</div><div class="cell" data-val="ぽ">ぽ</div><div class="cell" data-val="ちぇ">チェ</div></div>
+    <div class="container ja-container display">
+        <div class="table ja">
+            <div class="row">
+                <div class="cell" data-val="１">１</div>
+                <div class="cell" data-val="２">２</div>
+                <div class="cell" data-val="３">３</div>
+                <div class="cell" data-val="４">４</div>
+                <div class="cell" data-val="５">５</div>
+                <div class="cell" data-val="６">６</div>
+                <div class="cell" data-val="７">７</div>
+                <div class="cell" data-val="８">８</div>
+                <div class="cell" data-val="９">９</div>
+                <div class="cell" data-val="０">０</div>
+                <div class="cell" data-val="ー">ー</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val="ー">ー</div>
+                <div class="cell" data-val="に">に</div>
+                <div class="cell" data-val="は">は</div>
+                <div class="cell" data-val="、">、</div>
+                <div class="cell" data-val="ち">ち</div>
+                <div class="cell" data-val="ぐ">ぐ</div>
+                <div class="cell" data-val="ば">ば</div>
+                <div class="cell" data-val="こ">こ</div>
+                <div class="cell" data-val="が">が</div>
+                <div class="cell" data-val="ひ">ひ</div>
+                <div class="cell" data-val="げ">げ</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="の">の</div>
+                <div class="cell" data-val="と">と</div>
+                <div class="cell" data-val="か">か</div>
+                <div class="cell hp" data-val="ん">ん</div>
+                <div class="cell" data-val="っ">っ</div>
+                <div class="cell" data-val="く">く</div>
+                <div class="cell hp" data-val="う">う</div>
+                <div class="cell" data-val="い">い</div>
+                <div class="cell" data-val="し">し</div>
+                <div class="cell" data-val="な">な</div>
+                <div class="cell" data-val="BS">BS</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="す">す</div>
+                <div class="cell" data-val="ま">ま</div>
+                <div class="cell" data-val="き">き</div>
+                <div class="cell" data-val="る">る</div>
+                <div class="cell" data-val="つ">つ</div>
+                <div class="cell" data-val="て">て</div>
+                <div class="cell" data-val="た">た</div>
+                <div class="cell" data-val="で">で</div>
+                <div class="cell" data-val="。">。</div>
+                <div class="cell" data-val="ぶ">ぶ</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="table ja">
+            <div class="row">
+                <div class="cell" data-val="ぁ">ぁ</div>
+                <div class="cell" data-val="ぃ">ぃ</div>
+                <div class="cell" data-val="ぅ">ぅ</div>
+                <div class="cell" data-val="ぇ">ぇ</div>
+                <div class="cell" data-val="ぉ">ぉ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell" data-val="，">，</div>
+                <div class="cell" data-val="「">「</div>
+                <div class="cell" data-val="」">」</div>
+                <div class="cell" data-val="；">；</div>
+                <div class="cell" data-val="＠">＠</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val="ファ">ファ</div>
+                <div class="cell" data-val="ご">ご</div>
+                <div class="cell" data-val="ふ">ふ</div>
+                <div class="cell" data-val="ふぃ">フィ</div>
+                <div class="cell" data-val="ふぇ">フェ</div>
+                <div class="cell" data-val="うぃ">ウィ</div>
+                <div class="cell" data-val="ぱ">ぱ</div>
+                <div class="cell" data-val="よ">よ</div>
+                <div class="cell" data-val="み">み</div>
+                <div class="cell" data-val="うぇ">ウェ</div>
+                <div class="cell" data-val="うぉ">ウォ</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="ほ">ほ</div>
+                <div class="cell" data-val="じ">じ</div>
+                <div class="cell" data-val="れ">れ</div>
+                <div class="cell hp" data-val="も">も</div>
+                <div class="cell" data-val="ゆ">ゆ</div>
+                <div class="cell" data-val="へ">へ</div>
+                <div class="cell hp" data-val="あ">あ</div>
+                <div class="cell" data-val="れ">れ</div>
+                <div class="cell" data-val="お">お</div>
+                <div class="cell" data-val="え">え</div>
+                <div class="cell">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="づ">づ</div>
+                <div class="cell" data-val="ぞ">ぞ</div>
+                <div class="cell" data-val="ぼ">ぼ</div>
+                <div class="cell" data-val="む">む</div>
+                <div class="cell" data-val="ふぉ">フォ</div>
+                <div class="cell" data-val="せ">せ</div>
+                <div class="cell" data-val="ね">ね</div>
+                <div class="cell" data-val="べ">べ</div>
+                <div class="cell" data-val="ぷ">ぷ</div>
+                <div class="cell" data-val="ヴ">ヴ</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="table ja">
+            <div class="row">
+                <div class="cell" data-val="や">や</div>
+                <div class="cell" data-val="みゃ">みゃ</div>
+                <div class="cell" data-val="みゅ">みゅ</div>
+                <div class="cell" data-val="みょ">みょ</div>
+                <div class="cell" data-val="ゎ">ゎ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell" data-val="．">．</div>
+                <div class="cell" data-val="（">（</div>
+                <div class="cell" data-val="）">）</div>
+                <div class="cell" data-val="：">：</div>
+                <div class="cell" data-val="＊">＊</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val="ぢ">ぢ</div>
+                <div class="cell" data-val="め">め</div>
+                <div class="cell" data-val="け">け</div>
+                <div class="cell" data-val="てぃ">ティ</div>
+                <div class="cell" data-val="でぃ">ディ</div>
+                <div class="cell" data-val="しぇ">シェ</div>
+                <div class="cell" data-val="ぺ">ぺ</div>
+                <div class="cell" data-val="ど">ど</div>
+                <div class="cell" data-val="や">や</div>
+                <div class="cell" data-val="じぇ">ジェ</div>
+                <div class="cell">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="を">を</div>
+                <div class="cell" data-val="さ">さ</div>
+                <div class="cell" data-val="お">お</div>
+                <div class="cell hp" data-val="り">り</div>
+                <div class="cell" data-val="ず">ず</div>
+                <div class="cell" data-val="び">び</div>
+                <div class="cell hp" data-val="ら">ら</div>
+                <div class="cell" data-val="じ">じ</div>
+                <div class="cell" data-val="さ">さ</div>
+                <div class="cell" data-val="そ">そ</div>
+                <div class="cell">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="ぜ">ぜ</div>
+                <div class="cell" data-val="ざ">ざ</div>
+                <div class="cell" data-val="ぎ">ぎ</div>
+                <div class="cell" data-val="ろ">ろ</div>
+                <div class="cell" data-val="ぬ">ぬ</div>
+                <div class="cell" data-val="わ">わ</div>
+                <div class="cell" data-val="だ">だ</div>
+                <div class="cell" data-val="ぴ">ぴ</div>
+                <div class="cell" data-val="ぽ">ぽ</div>
+                <div class="cell" data-val="ちぇ">チェ</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="table ja">
+            <div class="row">
+                <div class="cell" data-val="ゅ">ゅ</div>
+                <div class="cell" data-val="びゃ">びゃ</div>
+                <div class="cell" data-val="びゅ">びゅ</div>
+                <div class="cell" data-val="びょ">びょ</div>
+                <div class="cell">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val="ひゅ">ひゅ</div>
+                <div class="cell" data-val="しゅ">しゅ</div>
+                <div class="cell" data-val="しょ">しょ</div>
+                <div class="cell" data-val="きゅ">きゅ</div>
+                <div class="cell" data-val="ちゅ">ちゅ</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="ひょ">ひょ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell hp" data-val="きょ">きょ</div>
+                <div class="cell" data-val="ちょ">ちょ</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="ひゃ">ひゃ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell" data-val="しゃ">しゃ</div>
+                <div class="cell" data-val="きゃ">きゃ</div>
+                <div class="cell" data-val="ちゃ">ちゃ</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="table ja">
+            <div class="row">
+                <div class="cell" data-val="ょ">ょ</div>
+                <div class="cell" data-val="ぴゃ">ぴゃ</div>
+                <div class="cell" data-val="ぴゅ">ぴゅ</div>
+                <div class="cell" data-val="ぴょ">ぴょ</div>
+                <div class="cell">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="cell half">&nbsp;</div>
+                <div class="cell" data-val="りゅ">りゅ</div>
+                <div class="cell" data-val="じゅ">じゅ</div>
+                <div class="cell" data-val="じょ">じょ</div>
+                <div class="cell" data-val="ぎゅ">ぎゅ</div>
+                <div class="cell" data-val="にゅ">にゅ</div>
+            </div>
+            <div class="row">
+                <div class="cell one">&nbsp;</div>
+                <div class="cell" data-val="りょ">りょ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell hp" data-val="ぎょ">ぎょ</div>
+                <div class="cell" data-val="にょ">にょ</div>
+            </div>
+            <div class="row">
+                <div class="cell one-half">&nbsp;</div>
+                <div class="cell" data-val="りゃ">りゃ</div>
+                <div class="cell">&nbsp;</div>
+                <div class="cell" data-val="じゃ">じゃ</div>
+                <div class="cell" data-val="ぎゃ">ぎゃ</div>
+                <div class="cell" data-val="にゃ">にゃ</div>
+            </div>
+        </div>
     </div>
-    <br>
 
-    <div class="table">
-        <div class="row"><div class="cell" data-val="ゅ">ゅ</div><div class="cell" data-val="びゃ">びゃ</div><div class="cell" data-val="びゅ">びゅ</div><div class="cell" data-val="びょ">びょ</div><div class="cell">&nbsp;</div></div>
-        <div class="row"><div class="cell half">&nbsp;</div><div class="cell" data-val="ひゅ">ひゅ</div><div class="cell" data-val="しゅ">しゅ</div><div class="cell" data-val="しょ">しょ</div><div class="cell" data-val="きゅ">きゅ</div><div class="cell" data-val="ちゅ">ちゅ</div></div>
-        <div class="row"><div class="cell one">&nbsp;</div><div class="cell" data-val="ひょ">ひょ</div><div class="cell">&nbsp;</div><div class="cell">&nbsp;</div><div class="cell hp" data-val="きょ">きょ</div><div class="cell" data-val="ちょ">ちょ</div></div>
-        <div class="row"><div class="cell one-half">&nbsp;</div><div class="cell" data-val="ひゃ">ひゃ</div><div class="cell">&nbsp;</div><div class="cell" data-val="しゃ">しゃ</div><div class="cell" data-val="きゃ">きゃ</div><div class="cell" data-val="ちゃ">ちゃ</div></div>
-    </div>
-    <br>
-
-    <div class="table">
-        <div class="row"><div class="cell" data-val="ょ">ょ</div><div class="cell" data-val="ぴゃ">ぴゃ</div><div class="cell" data-val="ぴゅ">ぴゅ</div><div class="cell" data-val="ぴょ">ぴょ</div><div class="cell">&nbsp;</div></div>
-        <div class="row"><div class="cell half">&nbsp;</div><div class="cell" data-val="りゅ">りゅ</div><div class="cell" data-val="じゅ">じゅ</div><div class="cell" data-val="じょ">じょ</div><div class="cell" data-val="ぎゅ">ぎゅ</div><div class="cell" data-val="にゅ">にゅ</div></div>
-        <div class="row"><div class="cell one">&nbsp;</div><div class="cell" data-val="りょ">りょ</div><div class="cell">&nbsp;</div><div class="cell">&nbsp;</div><div class="cell hp" data-val="ぎょ">ぎょ</div><div class="cell" data-val="にょ">にょ</div></div>
-        <div class="row"><div class="cell one-half">&nbsp;</div><div class="cell" data-val="りゃ">りゃ</div><div class="cell">&nbsp;</div><div class="cell" data-val="じゃ">じゃ</div><div class="cell" data-val="ぎゃ">ぎゃ</div><div class="cell" data-val="にゃ">にゃ</div></div>
-    </div>
-
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script>
-    $(function(){
-        var $text = $("textarea");
-        var timer = undefined;
+        $(function () {
+            var $text = $("textarea");
+            var timer = undefined;
 
-        $text.keyup(function(e){
-            if(typeof timer !== "undefined"){
-                clearTimeout(timer);
-                timer = undefined;
-            }
+            $text.keyup(function (e) {
+                if (typeof timer !== "undefined") {
+                    clearTimeout(timer);
+                    timer = undefined;
+                }
 
-            var text = $text.val();
-            // $("#out").text(text);
+                var text = $text.val();
+                // $("#out").text(text);
 
-            $("div.cell").removeAttr("data-hl");
-            $("div.table").removeAttr("data-table-hl");
-
-            var last = (text.length > 0)? text[text.length -1]: "";
-            var last_two = (text.length > 1)? text[text.length-2] + text[text.length -1]: "";
-
-            var $last_two = $('div.cell[data-val="' + last_two + '"]');
-            $last_two.attr("data-hl", 1);
-            $last_two.parents("div.table").attr("data-table-hl", 1)
-
-            if($last_two.length < 1){
-                // $("#last").text(last);
-                var $last = $('div.cell[data-val="' + last + '"]');
-                $last.attr("data-hl", 1);
-                $last.parents("div.table").attr("data-table-hl", 1)
-            }
-
-            timer = setTimeout(function(){
                 $("div.cell").removeAttr("data-hl");
                 $("div.table").removeAttr("data-table-hl");
-            }, 1500);
+                $(".container").removeAttr("data-table-hl");
+
+                var last = (text.length > 0) ? text[text.length - 1] : "";
+                var last_two = (text.length > 1) ? text[text.length - 2] + text[text.length - 1] : "";
+
+                var $last_two = $('div.cell[data-val="' + last_two + '"]');
+                $last_two.attr("data-hl", 1);
+                $last_two.parents("div.table").attr("data-table-hl", 1)
+                $last_two.parents(".container").attr("data-table-hl", 1)
+
+                if ($last_two.length < 1) {
+                    // $("#last").text(last);
+                    var $last = $('div.cell[data-val="' + last + '"]');
+                    $last.attr("data-hl", 1);
+                    $last.parents("div.table").attr("data-table-hl", 1)
+                    $last.parents(".container").attr("data-table-hl", 1)
+                }
+
+                if ($(".en-container[data-table-hl]").length == 0) {
+                    $(".ja-container").addClass("display");
+                } else {
+                    $(".ja-container").removeClass("display");
+                }
+
+                timer = setTimeout(function () {
+                    $("div.cell").removeAttr("data-hl");
+                    $("div.table").removeAttr("data-table-hl");
+                    $(".container").removeAttr("data-table-hl");
+
+                    if ($(".en-container[data-table-hl]").length == 0) {
+                        $(".ja-container").addClass("display");
+                    } else {
+                        $(".ja-container").removeClass("display");
+                    }
+                }, 1500);
+            });
         });
-    });
     </script>
 </body>
+
 </html>
