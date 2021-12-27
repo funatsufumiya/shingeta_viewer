@@ -524,6 +524,12 @@
                     timer = undefined;
                 }
 
+                if ((e.keyCode == 10 || e.keyCode == 13) && e.ctrlKey) {
+                    // Ctrl-Enter
+                    $text.val("");
+                    return;
+                }
+
                 var text = $text.val();
                 // $("#out").text(text);
 
